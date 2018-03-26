@@ -1,0 +1,45 @@
+import java.util.Arrays;
+import java.util.Scanner;
+public class FindS
+{
+	public static void main(String args[])
+	{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("number of examples:    ");
+	int Ne=sc.nextInt();
+	System.out.println("number of attributes:    ");
+	int Na=sc.nextInt();
+	String[][] data=new String[Ne][Na];
+	for(int i=0;i<Ne;i++)
+	{
+		System.out.println("enter line number "+i+" :  ");
+		System.out.println();
+		for(int j=0;j<Na;j++)
+		{
+			System.out.print("attribute "+j+" :  ");
+			data[i][j]=sc.next();
+			System.out.println();
+		}
+	}
+	sc.close();
+	String[] hypothesis=new String[Na];
+	if(data==null)
+	{		
+		System.out.println("no data entered");
+		System.exit(0);
+	}
+	for(int i=0;i<Na;i++)
+		hypothesis[i]=data[0][i];
+	for(int i=0;i<Ne;i++)
+	{
+		for(int j=0;j<Na;j++)
+		{
+			if(!hypothesis[j].equals(data[i][j]))
+				hypothesis[j]="?";
+		}
+	}
+	System.out.print("the final hypothesis is  :   ");
+	for(int i=0;i<Na;i++)
+		System.out.print(hypothesis[i]+"   ");
+	}
+}
